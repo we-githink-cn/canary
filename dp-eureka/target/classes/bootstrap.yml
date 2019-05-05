@@ -1,0 +1,33 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: dp-eureka
+  security:
+    user:
+      name: dolphin
+      password: dolphin
+  cloud:
+    config:
+      enabled: true
+
+
+eureka:
+  instance:
+    hostname: dp-eureka
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://dolphin:dolphin@${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    eviction-interval-timer-in-ms: 4000
+    enable-self-preservation: false
+    renewal-percent-threshold: 0.9
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
