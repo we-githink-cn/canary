@@ -23,6 +23,8 @@
 
     <modules>
         <module>dp-eureka</module>
+        <module>dp-config</module>
+        <module>dp-gateway</module>
     </modules>
 
     <dependencies>

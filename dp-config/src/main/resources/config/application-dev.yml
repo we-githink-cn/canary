@@ -1,6 +1,12 @@
-# ��¶��ض˵�
+#Redis相关
+spring:
+  redis:
+    host: redis.githink.cn
+    password: redis
+# 暴露监控端点
 management:
   endpoints:
     web:
       exposure:
         include: '*'
+
