@@ -1,6 +1,7 @@
 package cn.githink.gateway.config;
 
 import lombok.AllArgsConstructor;
+import org.springframework.cloud.gateway.config.GatewayProperties;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
 import org.springframework.cloud.gateway.support.NameUtils;
@@ -25,6 +26,7 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
 
     private static final String API_URI = "/v2/api-docs";
     private final RouteDefinitionRepository routeDefinitionRepository;
+    private final GatewayProperties gatewayProperties;
     private final FilterIgnorePropertiesConfig filterIgnorePropertiesConfig;
 
     @Override
@@ -32,15 +34,23 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
         List<SwaggerResource> resources = new ArrayList<>();
         List<RouteDefinition> routes = new ArrayList<>();
         routeDefinitionRepository.getRouteDefinitions().subscribe(route -> routes.add(route));
-        routes.forEach(routeDefinition -> routeDefinition.getPredicates().stream()
-                .filter(predicateDefinition -> "Path".equalsIgnoreCase(predicateDefinition.getName()))
-                .filter(predicateDefinition -> !filterIgnorePropertiesConfig.getSwaggerProviders().contains(routeDefinition.getId()))
-                .forEach(predicateDefinition -> resources.add(swaggerResource(routeDefinition.getId(),
-                        predicateDefinition.getArgs().get(NameUtils.GENERATED_NAME_PREFIX + "0")
-                                .replace("/**", API_URI)))));
-
-        return resources.stream().sorted(Comparator.comparing(SwaggerResource::getName))
-                .collect(Collectors.toList());
+//        routes.forEach(routeDefinition -> routeDefinition.getPredicates().stream()
+//                .filter(predicateDefinition -> "Path".equalsIgnoreCase(predicateDefinition.getName()))
+//                .filter(predicateDefinition -> !filterIgnorePropertiesConfig.getSwaggerProviders().contains(routeDefinition.getId()))
+//                .forEach(predicateDefinition -> resources.add(swaggerResource(routeDefinition.getId(),
+//                        predicateDefinition.getArgs().get(NameUtils.GENERATED_NAME_PREFIX + "0")
+//                                .replace("/**", API_URI)))));
+//
+//        return resources.stream().sorted(Comparator.comparing(SwaggerResource::getName))
+//                .collect(Collectors.toList());
+        gatewayProperties.getRoutes().stream().filter(routeDefinition -> routes.contains(routeDefinition.getId()))
+                .forEach(routeDefinition -> routeDefinition.getPredicates().stream()
+                        .filter(predicateDefinition -> "Path".equalsIgnoreCase(predicateDefinition.getName()))
+                        .filter(predicateDefinition -> !"pigx-auth".equalsIgnoreCase(routeDefinition.getId()))
+                        .forEach(predicateDefinition -> resources.add(swaggerResource(routeDefinition.getId(),
+                                predicateDefinition.getArgs().get(NameUtils.GENERATED_NAME_PREFIX + "0")
+                                        .replace("/**", API_URI)))));
+        return resources;
     }
 
     private SwaggerResource swaggerResource(String name, String location) {
