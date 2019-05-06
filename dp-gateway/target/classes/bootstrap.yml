@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: @artifactId@
+    name: dp-gateway
   # 配置中心
   cloud:
     config:

@@ -19,12 +19,15 @@
         <spring-platform.version>Cairo-SR8</spring-platform.version>
         <jackson.modules>2.9.8</jackson.modules>
         <spring-boot-admin.version>2.1.4</spring-boot-admin.version>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
 
     <modules>
         <module>dp-eureka</module>
         <module>dp-config</module>
         <module>dp-gateway</module>
+        <module>dp-common</module>
+        <module>dp-upms</module>
     </modules>
 
     <dependencies>

@@ -10,3 +10,23 @@ management:
       exposure:
         include: '*'
 
+#swagger公共信息
+swagger:
+  title: PigX Swagger API
+  description: 全宇宙最牛逼的Spring Cloud微服务开发脚手架
+  version: @project.version@
+  license: Powered By PigX
+  licenseUrl: https://pig4cloud.com/
+  terms-of-service-url: https://pig4cloud.com/
+  contact:
+    name: 冷冷
+    email: wangiegie@gmail.com
+    url: https://pig4cloud.com/about.html
+  authorization:
+    name: Dp OAuth
+    auth-regex: ^.*$
+    authorization-scope-list:
+      - scope: server
+        description: server all
+    token-url-list:
+      - http://dp-gateway:8673/auth/oauth/token
