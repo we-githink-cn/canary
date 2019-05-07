@@ -14,6 +14,23 @@
     <description>用户服务中心</description>
 
     <dependencies>
+        <!-- core 模块 -->
+        <dependency>
+            <groupId>cn.githink</groupId>
+            <artifactId>dp-core-common</artifactId>
+            <version>${dp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.githink</groupId>
+            <artifactId>dp-data-common</artifactId>
+            <version>${dp.version}</version>
+        </dependency>
+        <!-- Api 文档 -->
+        <dependency>
+            <groupId>cn.githink</groupId>
+            <artifactId>dp-swagger-common</artifactId>
+            <version>${dp.version}</version>
+        </dependency>
         <!--eureka 客户端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -23,6 +40,18 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <!--mybatis-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+        <!--数据库-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
         </dependency>
         <!--web 模块-->
         <dependency>
@@ -40,12 +69,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
-        </dependency>
-        <!-- Api文档 -->
-        <dependency>
-            <groupId>cn.githink</groupId>
-            <artifactId>dp-swagger-common</artifactId>
-            <version>${dp.version}</version>
         </dependency>
     </dependencies>
 

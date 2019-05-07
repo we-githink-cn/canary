@@ -1,7 +1,13 @@
+# 加解密根密码
+jasypt:
+  encryptor:
+    password: dp #根密码
+
 #Redis相关
 spring:
   redis:
     host: redis.githink.cn
+    port: 6379
     password: redis
 # 暴露监控端点
 management:
@@ -12,16 +18,16 @@ management:
 
 #swagger公共信息
 swagger:
-  title: PigX Swagger API
-  description: 全宇宙最牛逼的Spring Cloud微服务开发脚手架
+  title: Dolphin Swagger API
+  description: We 创作社区后台 Api
   version: @project.version@
-  license: Powered By PigX
-  licenseUrl: https://pig4cloud.com/
-  terms-of-service-url: https://pig4cloud.com/
+  license: Powered By Dolphin
+  licenseUrl: https://githink.cn/
+  terms-of-service-url: https://githink.cn/
   contact:
-    name: 冷冷
-    email: wangiegie@gmail.com
-    url: https://pig4cloud.com/about.html
+    name: Githinkcn
+    email: maojiajiajia@gmail.com
+    url: https://jl.githink.cn
   authorization:
     name: Dp OAuth
     auth-regex: ^.*$
@@ -30,3 +36,52 @@ swagger:
         description: server all
     token-url-list:
       - http://dp-gateway:8673/auth/oauth/token
+
+# feign 配置
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+
+# hystrix 配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 60000
+  shareSecurityContext: true
+
+#请求处理的超时时间
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+# mybaits-plus配置
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  global-config:
+    banner: false
+    db-config:
+      id-type: 0
+      field-strategy: 1
+      table-underline: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true

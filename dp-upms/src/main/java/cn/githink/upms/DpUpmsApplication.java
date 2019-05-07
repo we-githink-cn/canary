@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableDpSwagger
 @SpringCloudApplication
 @RestController
-@Api(value = "dept", description = "部门管理模块")
+@Api(value = "dept", tags = "部门管理模块")
 public class DpUpmsApplication {
 
     public static void main(String[] args) {

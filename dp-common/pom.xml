@@ -14,6 +14,9 @@
     <description>公共聚合模块</description>
 
     <modules>
+        <module>dp-core-common</module>
+        <module>dp-data-common</module>
+        <module>dp-model-common</module>
         <module>dp-swagger-common</module>
     </modules>
 </project>

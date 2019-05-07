@@ -6,14 +6,13 @@ spring:
     name: @artifactId@
   profiles:
     active: native
-  # ÅäÖÃÖĞĞÄ
   cloud:
     config:
       server:
         native:
           search-locations: classpath:/config/
-
-# ×¢²áÖĞĞÄÅäÖÃ
+  main:
+    allow-bean-definition-overriding: true
 eureka:
   instance:
     prefer-ip-address: true
@@ -21,7 +20,7 @@ eureka:
     service-url:
       defaultZone: http://dolphin:dolphin@dp-eureka:8761/eureka/
 
-# ±©Â¶¼à¿Ø¶Ëµã
+# ï¿½ï¿½Â¶ï¿½ï¿½Ø¶Ëµï¿½
 management:
   endpoints:
     web:
