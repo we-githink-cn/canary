@@ -20,9 +20,15 @@
             <artifactId>dp-core-common</artifactId>
             <version>${dp.version}</version>
         </dependency>
+        <!-- 数据操作相关 -->
         <dependency>
             <groupId>cn.githink</groupId>
             <artifactId>dp-data-common</artifactId>
+            <version>${dp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.githink</groupId>
+            <artifactId>dp-model-common</artifactId>
             <version>${dp.version}</version>
         </dependency>
         <!-- Api 文档 -->
