@@ -1,2 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    cn.githink.data.mybatis.MybatisPlusConfig
+    cn.githink.data.mybatis.MybatisPlusConfig,\
+    cn.githink.data.cache.RedisTemplateConfig,\
+    cn.githink.data.cache.RedisCacheAutoConfiguration,\
+    cn.githink.data.cache.RedisCacheManagerConfig
