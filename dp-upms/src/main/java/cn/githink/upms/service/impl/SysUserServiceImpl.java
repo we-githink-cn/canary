@@ -25,7 +25,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Override
     public Boolean saveUser(UserDto userDto) {
-        System.out.println("+++++"+userDto.toString());
+        System.out.println("+++++"+userDto.getUsername());
         return null;
     }
 }

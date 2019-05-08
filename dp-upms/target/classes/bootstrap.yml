@@ -1,8 +1,6 @@
 server:
   port: 8674
 
-debug: true
-
 spring:
   application:
     name: dp-upms
