@@ -21,12 +21,14 @@ package cn.githink.data.mybatis;
 import cn.githink.data.datascope.DataScopeInterceptor;
 import com.baomidou.mybatisplus.core.injector.ISqlInjector;
 import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
+import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 
@@ -34,8 +36,8 @@ import javax.sql.DataSource;
  * @author lengleng
  * @date 2017/10/29
  */
+@Component
 @Configuration
-@ConditionalOnBean(DataSource.class)
 @MapperScan("cn.githink.*.mapper")
 public class MybatisPlusConfig {
 
@@ -71,4 +73,14 @@ public class MybatisPlusConfig {
 	public ISqlInjector sqlInjector() {
 		return new LogicSqlInjector();
 	}
+
+	/**
+	 * 乐观锁 插件
+	 * @return
+	 */
+	@Bean
+	public OptimisticLockerInterceptor optimisticLoker() {
+		return new OptimisticLockerInterceptor();
+	}
+
 }

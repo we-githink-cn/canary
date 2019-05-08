@@ -1,36 +1,49 @@
-package cn.githink.model.upms.po;
+package cn.githink.model.upms.sysuser.vo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import cn.githink.model.member.vo.MemberVo;
+import cn.githink.model.upms.sysrole.po.SysRole;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
-@TableName(value = "sys_user")
-public class SysUserPo implements Serializable {
+@Accessors(chain = true)
+@ApiModel(value = "UserVo", description = "User页面视图对象")
+public class UserVo implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     /**
      * 主键ID
      */
-    @TableId(value = "user_id", type = IdType.UUID)
     private Integer userId;
     /**
      * 用户名
      */
     private String username;
-
+    /**
+     * 密码
+     */
     private String password;
     /**
      * 随机盐
      */
-    @JsonIgnore
     private String salt;
+
+    /**
+     * 微信openid
+     */
+    private String wxOpenid;
+
+    /**
+     * QQ openid
+     */
+    private String qqOpenid;
+
     /**
      * 创建时间
      */
@@ -42,14 +55,12 @@ public class SysUserPo implements Serializable {
     /**
      * 0-正常，1-删除
      */
-    @TableLogic
     private String delFlag;
 
     /**
      * 锁定标记
      */
     private String lockFlag;
-
     /**
      * 简介
      */
@@ -65,12 +76,17 @@ public class SysUserPo implements Serializable {
     private Integer deptId;
 
     /**
-     * 微信openid
+     * 部门名称
      */
-    private String wxOpenid;
+    private String deptName;
 
     /**
-     * QQ openid
+     * 角色列表
      */
-    private String qqOpenid;
+    private List<SysRole> roleList;
+
+    /**
+     * 用户扩展信息
+     */
+    private MemberVo memberVo;
 }

@@ -1,16 +1,50 @@
 package cn.githink.upms.controller;
 
-import io.swagger.annotations.Api;
+import cn.githink.core.utils.Dp;
+import cn.githink.model.upms.sysuser.bo.SysUserQueryBody;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author mzk
+ */
 @Api(value = "user",tags = "用户管理")
 @RestController
 @RequestMapping(value = "/user")
 @AllArgsConstructor
 public class UserController {
 
+    @GetMapping("/{id}")
+    @ApiOperation(value = "获取用户", notes = "根据用户Id获取用户")
+    @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Integer", paramType = "path")
+    private Dp get(@PathVariable Integer id){
+        return new Dp();
+    }
 
+    @PostMapping
+    @ApiOperation(value = "新增", notes = "添加用户")
+    public Dp user(@RequestBody SysUserQueryBody sysUserQueryBody) {
+        return new Dp();
+    }
 
+    @PutMapping
+    @ApiOperation(value = "修改",notes = "修改用户")
+    public Dp updata (@RequestBody SysUserQueryBody sysUserQueryBody){
+        return new Dp();
+    }
+
+    @DeleteMapping("/{id}")
+    @ApiOperation(value = "删除", notes = "删除用户")
+    @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Integer", paramType = "path")
+    public Dp delete (@PathVariable Integer id){
+        return new Dp();
+    }
+
+    @GetMapping("/page")
+    @ApiOperation(value = "分页查询", notes = "用户集合")
+    public Dp findList(@ApiParam SysUserQueryBody sysUserQueryBody){
+        return new Dp();
+    }
 }

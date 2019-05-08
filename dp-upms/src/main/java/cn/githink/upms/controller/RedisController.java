@@ -1,6 +1,7 @@
 package cn.githink.upms.controller;
 
 import cn.hutool.json.JSONObject;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -15,6 +16,7 @@ import java.util.Map;
  * @Description:
  * @date 2019/5/7 17:54
  */
+@Api(value = "redis",tags = "Redis测试接口")
 @RestController
 @RequestMapping(value = "/redis")
 @AllArgsConstructor

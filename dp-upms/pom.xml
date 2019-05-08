@@ -26,6 +26,12 @@
             <artifactId>dp-data-common</artifactId>
             <version>${dp.version}</version>
         </dependency>
+        <!--mybatis plus extension,包含了mybatis plus core-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
         <dependency>
             <groupId>cn.githink</groupId>
             <artifactId>dp-model-common</artifactId>

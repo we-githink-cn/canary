@@ -36,6 +36,11 @@
             <artifactId>dp-data-common</artifactId>
             <version>${dp.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger.core.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
