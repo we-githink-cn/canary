@@ -2,16 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>cn.githink</groupId>
         <artifactId>dolphin</artifactId>
         <version>${dp.version}</version>
     </parent>
 
-    <artifactId>dp-upms</artifactId>
+    <artifactId>dp-cms</artifactId>
     <packaging>jar</packaging>
 
-    <description>用户服务中心</description>
+    <description>内容管理中心</description>
 
     <dependencies>
         <!-- core 模块 -->
@@ -20,12 +21,7 @@
             <artifactId>dp-core-common</artifactId>
             <version>${dp.version}</version>
         </dependency>
-        <!-- 数据操作相关 -->
-        <dependency>
-            <groupId>cn.githink</groupId>
-            <artifactId>dp-data-common</artifactId>
-            <version>${dp.version}</version>
-        </dependency>
+        <!-- 实体类相关 -->
         <dependency>
             <groupId>cn.githink</groupId>
             <artifactId>dp-model-common</artifactId>
@@ -46,18 +42,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
-        <!--mybatis-->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus.version}</version>
-        </dependency>
-        <!--数据库-->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.connector.version}</version>
         </dependency>
         <!--web 模块-->
         <dependency>
@@ -83,14 +67,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>7</source>
-                    <target>7</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>

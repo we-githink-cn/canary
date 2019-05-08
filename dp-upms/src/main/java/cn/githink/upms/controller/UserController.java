@@ -1,7 +1,9 @@
 package cn.githink.upms.controller;
 
 import cn.githink.core.utils.Dp;
+import cn.githink.model.upms.sysuser.UserDto;
 import cn.githink.model.upms.sysuser.bo.SysUserQueryBody;
+import cn.githink.upms.service.SysUserService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class UserController {
 
+    private final SysUserService userService;
+
     @GetMapping("/{id}")
     @ApiOperation(value = "获取用户", notes = "根据用户Id获取用户")
     @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Integer", paramType = "path")
@@ -25,8 +29,8 @@ public class UserController {
 
     @PostMapping
     @ApiOperation(value = "新增", notes = "添加用户")
-    public Dp user(@RequestBody SysUserQueryBody sysUserQueryBody) {
-        return new Dp();
+    public Dp save (@RequestBody UserDto userDto) {
+        return new Dp<>(userService.saveUser(userDto));
     }
 
     @PutMapping
@@ -44,7 +48,7 @@ public class UserController {
 
     @GetMapping("/page")
     @ApiOperation(value = "分页查询", notes = "用户集合")
-    public Dp findList(@ApiParam SysUserQueryBody sysUserQueryBody){
+    public Dp findList(SysUserQueryBody sysUserQueryBody){
         return new Dp();
     }
 }

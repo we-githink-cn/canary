@@ -34,6 +34,7 @@
         <module>dp-gateway</module>
         <module>dp-common</module>
         <module>dp-upms</module>
+        <module>dp-cms</module>
     </modules>
 
     <dependencies>

@@ -33,9 +33,6 @@ public class SysUserQueryBody extends BaseRequest implements Serializable {
      */
     @ApiModelProperty(value = "用户名", name = "username")
     private String username;
-
-    @ApiModelProperty(value = "密码")
-    private String password;
     /**
      * 删除标记
      */

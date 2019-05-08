@@ -4,6 +4,23 @@ spring:
       locator:
         enabled: true
       routes:
+        - id: dp-cms
+          uri: lb://dp-cms
+          predicates:
+            - Path=/cms/**
+          filters:
+            # 限流配置
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@remoteAddrKeyResolver}'
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+              # 降级配置
+            - name: Hystrix
+              args:
+                name: default
+                fallbackUri: 'forward:/fallback'
+        # 权限管理服务
         - id: dp-upms
           uri: lb://dp-upms
           predicates:
