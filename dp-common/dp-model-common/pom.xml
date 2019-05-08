@@ -32,9 +32,9 @@
             <version>${dp.version}</version>
         </dependency>
         <dependency>
-            <groupId>cn.githink</groupId>
-            <artifactId>dp-data-common</artifactId>
-            <version>${dp.version}</version>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
+            <version>${mybatis-plus.version}</version>
         </dependency>
         <dependency>
             <groupId>io.swagger</groupId>

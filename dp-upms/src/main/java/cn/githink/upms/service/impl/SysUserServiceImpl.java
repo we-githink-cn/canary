@@ -9,7 +9,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author 毛子坤
@@ -22,10 +25,15 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
+    private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Boolean saveUser(UserDto userDto) {
-        System.out.println("+++++"+userDto.getUsername());
+        SysUser sysUser = new SysUser();
+        BeanUtils.copyProperties(userDto, sysUser);
+        sysUser.setPassword(ENCODER.encode(userDto.getPassword()));
+        baseMapper.insert(sysUser);
         return null;
     }
 }
