@@ -1,8 +1,5 @@
 server:
   port: 8675
-
-debug: true
-
 spring:
   application:
     name: @artifactId@

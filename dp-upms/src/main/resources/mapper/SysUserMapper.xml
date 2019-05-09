@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.githink.upms.mapper.SysUserMapper">
-
+    <select id="findList" resultType="hashmap">
+        SELECT * FROM sys_user AS t
+        <where>
+            <if test="query.username != null and query.username != ''">
+                AND t.username LIKE CONCAT('%',#{query.username},'%')
+            </if>
+            <if test="query.phone != null and query.phone != ''">
+                AND t.phone = #{query.phone}
+            </if>
+            <if test="query.deptId != null and query.deptId != ''">
+                AND t.dept_id = #{query.deptId}
+            </if>
+            <if test="query.delFlag!= null and query.delFlag != ''">
+                AND t.del_flag = #{query.delFlag}
+            </if>
+        </where>
+        ORDER BY t.create_time DESC
+    </select>
 </mapper>

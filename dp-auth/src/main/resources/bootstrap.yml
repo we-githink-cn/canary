@@ -1,0 +1,25 @@
+server:
+  port: 8777
+spring:
+  application:
+    name: @artifactId@
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: dp-config
+  profiles:
+    active: dev
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://dolphin:dolphin@dp-eureka:8761/eureka/
+
+
+

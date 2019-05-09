@@ -18,5 +18,6 @@
         <module>dp-data-common</module>
         <module>dp-model-common</module>
         <module>dp-swagger-common</module>
+        <module>dp-security-common</module>
     </modules>
 </project>

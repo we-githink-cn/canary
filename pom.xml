@@ -29,12 +29,14 @@
     </properties>
 
     <modules>
-        <module>dp-eureka</module>
+        <module>dp-auth</module>
         <module>dp-config</module>
-        <module>dp-gateway</module>
         <module>dp-common</module>
-        <module>dp-upms</module>
         <module>dp-cms</module>
+        <module>dp-eureka</module>
+        <module>dp-gateway</module>
+        <module>dp-upms</module>
+        <module>dp-auth</module>
     </modules>
 
     <dependencies>

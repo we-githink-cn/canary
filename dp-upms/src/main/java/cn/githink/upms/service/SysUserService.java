@@ -1,8 +1,10 @@
 package cn.githink.upms.service;
 
-import cn.githink.model.upms.sysuser.UserDto;
-import cn.githink.model.upms.sysuser.bo.SysUserQueryBody;
-import cn.githink.model.upms.sysuser.po.SysUser;
+import cn.githink.core.utils.Dp;
+import cn.githink.model.entities.upms.sysuser.UserDto;
+import cn.githink.model.entities.upms.sysuser.bo.SysUserQueryBody;
+import cn.githink.model.entities.upms.sysuser.po.SysUser;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -18,5 +20,9 @@ public interface SysUserService extends IService<SysUser> {
      * @param userDto
      * @return
      */
-    Boolean saveUser(UserDto userDto);
+    Dp saveUser(UserDto userDto);
+
+    Boolean updateUser(UserDto userDto);
+
+    IPage findList(SysUserQueryBody sysUserQueryBody);
 }
